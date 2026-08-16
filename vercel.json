@@ -15,8 +15,16 @@
   ],
   "routes": [
     {
+      "src": "/admin",
+      "dest": "/public/admin/admin.html"
+    },
+    {
       "src": "/admin/(.*)",
       "dest": "/public/admin/$1"
+    },
+    {
+      "src": "/docs-ui",
+      "dest": "/public/docs/index.html"
     },
     {
       "src": "/docs-ui/(.*)",
