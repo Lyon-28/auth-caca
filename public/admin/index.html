@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caca Auth — Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><i class="fa-solid fa-shield-halved"></i> Caca Auth</div>
+      <nav>
+        <button class="nav-item active" data-view="overview"><i class="fa-solid fa-gauge"></i> Overview</button>
+        <button class="nav-item" data-view="users"><i class="fa-solid fa-users"></i> Users</button>
+        <button class="nav-item" data-view="logs"><i class="fa-solid fa-list-check"></i> Audit Logs</button>
+        <button class="nav-item" data-view="webhooks"><i class="fa-solid fa-plug"></i> Webhooks</button>
+        <button class="nav-item" data-view="keys"><i class="fa-solid fa-key"></i> API Keys</button>
+      </nav>
+      <div class="sidebar-footer">
+        <input id="apiKeyInput" placeholder="X-API-Key (secret)" />
+      </div>
+    </aside>
+    
+    <main class="content">
+      <header class="topbar">
+        <h1 id="viewTitle">Overview</h1>
+        <button id="refreshBtn" class="btn-icon"><i class="fa-solid fa-rotate"></i></button>
+      </header>
+      
+      <section id="view-overview" class="view active">
+        <div class="cards" id="metricCards"></div>
+      </section>
+      
+      <section id="view-users" class="view">
+        <div class="toolbar">
+          <input id="userSearch" placeholder="Filter by status..." />
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Verified</th>
+              <th>MFA</th>
+              <th>Created</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </section>
+      
+      <section id="view-logs" class="view">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>User</th>
+              <th>IP</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="logsBody"></tbody>
+        </table>
+      </section>
+      
+      <section id="view-webhooks" class="view">
+        <div class="toolbar">
+          <input id="webhookUrl" placeholder="https://your-app.com/webhook" />
+          <input id="webhookEvents" placeholder="user.created,user.deleted" />
+          <button id="addWebhookBtn" class="btn-primary">Add Webhook</button>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>URL</th>
+              <th>Events</th>
+              <th>Active</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="webhooksBody"></tbody>
+        </table>
+      </section>
+      
+      <section id="view-keys" class="view">
+        <p class="muted">API keys are shown once at tenant registration. Use tenant login to retrieve them again.</p>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
